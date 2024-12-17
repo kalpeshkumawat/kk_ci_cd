@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             KalpeshCiCDTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Android Mobile App",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
