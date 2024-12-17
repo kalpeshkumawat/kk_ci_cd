@@ -3,7 +3,7 @@ workflows:
     name: Native Android Build Workflow
     environment:
       vars:
-        ANDROID_KEYSTORE_PATH: G:\\KalpeshFlutter\\kk_ci_cd_project\\keystore\\cicd.jks
+        ANDROID_KEYSTORE_PATH: $FCI_BUILD_DIR/keystore/cicd.jks
         ANDROID_KEYSTORE_PASSWORD: 123456
         ANDROID_KEY_ALIAS: cicd
         ANDROID_KEY_PASSWORD: 123456
