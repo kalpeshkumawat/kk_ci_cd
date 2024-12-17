@@ -8,22 +8,17 @@ workflows:
         ANDROID_KEY_ALIAS: cicd
         ANDROID_KEY_PASSWORD: 123456
     scripts:
+      - name: Make gradlew executable
+        script: chmod +x ./gradlew
       - name: Install dependencies
         script: ./gradlew dependencies
       - name: Build APK
         script: ./gradlew assembleRelease
       - name: Sign APK
         script: |
-          # Path to the unsigned APK
           UNSIGNED_APK_PATH="app/build/outputs/apk/release/app-release-unsigned.apk"
-          
-          # Path to the signed APK
           SIGNED_APK_PATH="app/build/outputs/apk/release/app-release.apk"
-          
-          # Use zipalign to optimize the APK
           zipalign -v -p 4 $UNSIGNED_APK_PATH $SIGNED_APK_PATH
-          
-          # Sign the APK with the keystore
           apksigner sign --ks $ANDROID_KEYSTORE_PATH \
             --ks-key-alias $ANDROID_KEY_ALIAS \
             --ks-pass pass:$ANDROID_KEYSTORE_PASSWORD \
